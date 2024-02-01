@@ -2,32 +2,636 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@media (max-width: 600px) {
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+  .hamburger {
+    height: 30px;
+    width: 30px;
+  }
+  .nav-elements {
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background-color: #d9d9d9;
+    width: 0px;
+    height: calc(100vh - 60px);
+    transition: all 0.3s ease-in;
+    overflow: hidden;
+    z-index: 10;
+  }
+
+  .nav-elements.active {
+    width: 270px;
+    position: absolute;
+  }
+
+  .nav-elements ul {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .nav-elements Link{
+
+    position: relative;
+    z-index: 11;
+  }
+  .navMenuLink{
+    position: relative;
+    z-index: 11;
+  }
+  .nav-elementsQr {
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background-color: #d9d9d9;
+    width: 0px;
+    height: calc(100vh - 60px);
+    transition: all 0.3s ease-in;
+    overflow: hidden;
+    z-index: 10;
+  }
+
+  .nav-elementsQr.active {
+    width: 270px;
+    position: absolute;
+  }
+
+  .navTitle{
+    color: black;
+    width: 120px;
+    text-align: left;
+  }
+  .subNavBtns{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .subNavBtn1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    height: 50px;
+  }
+  .subNavBtn2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #d9d9d9;
+    height: 50px;
+  }
+  .subNavBtnsMd{
+    display: none;
+  }
+  .heroContainer{
+    position: relative;
+    z-index: -1;
+  }
+  .heroImg{
+    display: flex;
+    position: relative;
+    filter: brightness(80%);
+    z-index: -1;
+  }
+  .heroText {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    color: white;
+    font-size: 60px;
+    z-index: -1;
+  }
+  .heroContainerMd{
+    display: none;
+  }
+  .aboutContainer{
+    background-color: #ffffff;
+    padding: 20px;
+  }
+  .aboutTitle{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .aboutBody{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .businessesContainer{
+    background-color: #d9d9d9;
+    padding: 20px;
+  }
+  .businessesTitle{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .itemContainer{
+    background-color: white;
+    transition: 2s;
+    margin-top: 20px;
+    width: auto;
+  }
+
+  .itemImgContainer{
+    position: relative;
+    height: 80px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+  .itemImage{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    object-fit: contain;
+  }
+  .defaultContainer h1{
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    text-align: center;
+  }
+  .defaultContainer h2{
+    font-size: 18px;
+    margin-left: 10px;
+  }
+  .linkContainer{
+    display: flex;
+    flex-direction: column;
+  }
+  .itemLink{
+    font-size: 16px;
+    margin-left: 10px;
+  }
+  .webLinkCont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
+  .itemLinkWeb{
+    font-size: 18px;
+    background-color: royalblue;
+    color: white;
+    width: 160px;
+    padding: 3px;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .expandContainer h1{
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    text-align: left;
+  }
+  .expandContainer ul{
+    list-style-type:disc;
+    margin-left: 40px;
+    margin-right: 15px;
+  }
+  .expandContainer li{
+    font-size: 16px;
+  }
+  .expandContainer p{
+    font-size: 14px;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .expandSectionServices{
+    background-color: #ffffff;
+    margin-top: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .expandSectionClients{
+    background-color: white;
+    margin-top: 12px;
+    margin-bottom: 10px;
+  }
+  .cardQrContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+  .cardQrContainer h1 {
+    margin: 10px;
+  }
+
+  .itemBtnContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+  }
+  .itemBtn{
+    margin: 10px;
+    padding: 3px;
+    font-size: 18px;
+    background-color: #d9d9d9;
+    width: 40%;
+    border-radius: 12px;
+  }
+  .servicesContainer{
+    background-color: #d9d9d9;
+    padding: 20px;
+  }
+  .servicesTitle{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .serviceCardContainer{
+    background-color: white;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  .serviceCardContainer h1{
+    font-size: 18px;
+    font-weight: 500;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .serviceCardContainer ul{
+    list-style-type:disc;
+    margin-left: 20px;
+    font-size: 16px;
+    padding-bottom: 10px;
+  }
+  .serviceBtnCont{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+  .serviceBtn{
+    margin: 10px;
+    padding: 3px;
+    font-size: 18px;
+    background-color: #d9d9d9;
+    width: 60%;
+    border-radius: 12px;
+  }
+  .qrContainer{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+  }
+  .qrContainer h1{
+    position: absolute;
+    top: 20%;
+    font-size: 30px;
+    font-weight: 400;
+    width: 100%;
+
+  }
+  .qrContainer h2{
+    position: absolute;
+    bottom: 20%;
+    font-size: 30px;
+    font-weight: 400;
+    width: 100%;
+
+  }
+  .qrImgCont{
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .qrImg{
+    position: relative;
+    z-index: 2;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+@media (min-width: 600px) {
+  .pageContainer{
+    position: relative;
+    z-index: 0;
+  }
+  .menu-icon {
+    display: none;
+    cursor: pointer;
+  }
+  .hamburger{
+    height: 40px;
+    width: 40px;
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .nav-elements {
+    display: none;
+    z-index: 10;
+  }
+
+  .nav-elements.active {
+    width: 270px;
+  }
+
+  .nav-elements ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-elements ul li {
+    margin-right: unset;
+    margin-top: 22px;
+  }
+  .navTitle{
+    color: black;
+    text-align: left;
+  }
+
+  .heroContainerMd{
+    position: relative;
+    z-index: -1;
+  }
+  .heroContainer{
+    display: none;
+  }
+  .heroImg{
+    display: flex;
+    position: static;
+    filter: brightness(80%);
+
+  }
+  .heroItemsContainer{
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    z-index: 1;
+  }
+  .heroText {
+    color: white;
+    font-size: 60px;
+    z-index: -1;
+  }
+  .subNavBtns{
+    display: none;
+  }
+  .subNavBtnsMd{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    z-index: 10;
+  }
+  .subNavBtn1Md{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    height: 50px;
+    cursor: pointer;
+    position:relative;
+    z-index:20;
+    pointer-events: all
+  }
+  .subNavBtn2Md{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #d9d9d9;
+    height: 50px;
+    cursor: pointer;
+    position:relative;
+    z-index:20;
+    pointer-events: all
+  }
+  .aboutContainer{
+    background-color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .aboutTitle{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .aboutBody{
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    text-align: left;
+    width: 60%;
+  }
+  .businessesContainer{
+    display: flex;
+    flex-direction: column;
+    background-color: #d9d9d9;
+    padding: 20px;
+  }
+  .businessesTitle{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .businessItemsContainer{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .itemContainer{
+    background-color: white;
+    transition: 2s;
+    margin: 20px;
+    width: 400px;
+  }
+  .itemImgContainer{
+    position: relative;
+    height: 80px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+  .itemImage{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    object-fit: contain;
+  }
+  .defaultContainer h1{
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    text-align: center;
+  }
+  .defaultContainer h2{
+    font-size: 18px;
+    margin-left: 10px;
+  }
+  .linkContainer{
+    display: flex;
+    flex-direction: column;
+  }
+  .itemLink{
+    font-size: 18px;
+    margin-left: 10px;
+  }
+  .webLinkCont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
+  .itemLinkWeb{
+    font-size: 18px;
+    background-color: royalblue;
+    color: white;
+    width: 160px;
+    padding: 3px;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .expandContainer h1{
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    text-align: left;
+  }
+  .expandContainer ul{
+    list-style-type:disc;
+    margin-left: 40px;
+    margin-right: 15px;
+  }
+  .expandContainer li{
+    font-size: 16px;
+    margin-left: 15px;
+    text-decoration: black;
+  }
+  .expandContainer p{
+    font-size: 14px;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .expandSectionServices{
+    background-color: #ffffff;
+    margin-top: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .expandSectionClients{
+    background-color: white;
+    margin-top: 12px;
+    margin-bottom: 10px;
+  }
+  .cardQrContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+  .cardQrContainer h1 {
+    margin: 10px;
+  }
+
+  .itemBtnContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+  }
+  .itemBtn{
+    margin: 15px;
+    padding: 3px;
+    font-size: 18px;
+    background-color: #d9d9d9;
+    width: 40%;
+    border-radius: 12px;
+  }
+  .servicesContainer{
+    background-color: #d9d9d9;
+    padding: 20px;
+  }
+  .servicesTitle{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .serviceItemsContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .serviceCardContainer{
+    background-color: white;
+    padding: 10px;
+    margin: 20px;
+    width: 400px;
+  }
+  .serviceCardContainer h1{
+    font-size: 18px;
+    font-weight: 500;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .serviceCardContainer ul{
+    list-style-type:disc;
+    margin-left: 15px;
+    font-size: 16px;
+    padding-bottom: 10px;
+  }
+  .serviceBtnCont{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+  .serviceBtn{
+    margin: 10px;
+    padding: 3px;
+    font-size: 18px;
+    background-color: #d9d9d9;
+    width: 60%;
+    border-radius: 10px;
+  }
+  .qrContainer{
+    display: none;
   }
 }
